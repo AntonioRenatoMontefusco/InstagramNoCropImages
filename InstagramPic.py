@@ -85,8 +85,8 @@ def process_single_image(output_folder, image_path):
 
             # Create blurred background
             background = original.resize((INSTA_WIDTH_HORIZONTAL, INSTA_HEIGHT_HORIZONTAL), Image.LANCZOS)
-            background = background.filter(ImageFilter.GaussianBlur(BLUR_VALUE))
-
+           ## background = background.filter(ImageFilter.GaussianBlur(BLUR_VALUE))
+            background= Image.new("RGB", (INSTA_WIDTH_HORIZONTAL, INSTA_WIDTH_HORIZONTAL), (255, 255, 255))
             # Center resized image on background
             x_offset = 0
             y_offset = (INSTA_HEIGHT_HORIZONTAL - new_height) // 2
@@ -102,7 +102,8 @@ def process_single_image(output_folder, image_path):
 
             # Create blurred background
             background = original.resize((INSTA_WIDTH_VERTICAL, INSTA_HEIGHT_VERTICAL), Image.LANCZOS)
-            background = background.filter(ImageFilter.GaussianBlur(BLUR_VALUE))
+            #background = background.filter(ImageFilter.GaussianBlur(BLUR_VALUE))
+            background= Image.new("RGB", (INSTA_HEIGHT_HORIZONTAL, INSTA_WIDTH_HORIZONTAL), (255, 255, 255))
 
             # Center resized image on background
             x_offset = (INSTA_WIDTH_VERTICAL - new_width) // 2
@@ -167,7 +168,7 @@ def process_images_in_folder(input_folder, output_folder, num_processes=None):
 
 def main():
     # Customize these paths as needed
-    INPUT_FOLDER = r"C:\Users\Antonio Montefusco\Desktop\Foto Sony\Editate\Evento Nocera Cicalesi"
+    INPUT_FOLDER = r"C:\Users\Antonio Montefusco\Desktop\Foto Sony\Editate\Disy"
     OUTPUT_FOLDER = "cartella_output"
 
     # Process images using all available CPU cores
